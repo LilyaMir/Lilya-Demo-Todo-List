@@ -1,8 +1,8 @@
-function Hello(){
-  const name = "John Smith";
+function Hello(props){
+  console.log('props', props)
   return (
     <h2>
-      Hello from another component
+      Hello, I am {props.name}, I am {props.age} years old
     </h2>
   );
 }

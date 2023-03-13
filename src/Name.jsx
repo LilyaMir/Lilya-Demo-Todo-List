@@ -4,7 +4,7 @@ function Name(){
     return (
       <div>
         {name}
-        <Hello />
+        <Hello  name= 'John' age={23}/>
       </div>
     );
   }
