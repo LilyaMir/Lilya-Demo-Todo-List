@@ -1,13 +1,17 @@
 import logo from './logo.svg';
+import Name from './Name';
 import './App.css';
 
+
 function App() {
+  const message = 'Hello, I am your first React code.';
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <Name />        
+        <img src={logo} className="App-logo" alt="logo" />        
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {message}
         </p>
         <a
           className="App-link"
