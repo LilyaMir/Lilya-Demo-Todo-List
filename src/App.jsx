@@ -38,25 +38,11 @@ this.setState({
 
 
 render(){
-  const productComponents = this.state.products.map((product)=>{
-    return (
-      <Product 
-      key={product.name}
-      name={product.name} 
-      price={product.price} 
-      description={product.description}
-      />
-    )
-  });
-  console.log(productComponents);
+ 
   const usd = (this.state.amd / this.state.exchangeRate).toFixed(2)
 
     return (
       <div className="App">
-      {productComponents}
-{
-  [<span key={2}>Text</span>, <span key={3}>Text</span>, <span key={9}>Text</span>]
-}
       {
         this.state.products.map((product)=>{
           return (
