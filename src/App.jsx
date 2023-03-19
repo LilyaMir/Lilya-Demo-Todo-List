@@ -6,7 +6,7 @@ import Counter from './Counter';
 class App extends Component {
 state = {
   amd: 0,
-  exchangeRate: 391,
+  exchangeRate: 390,
   products: [
     {    
     name:'banana', 
