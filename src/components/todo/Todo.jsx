@@ -57,6 +57,7 @@ class Todo extends Component {
     });
     };
 
+
     render() {
         const isAddNewTaskButtonDisabled = !this.state.newTaskTitle.trim();
         return (
@@ -83,7 +84,10 @@ class Todo extends Component {
                 <Row>
                     {this.state.tasks.map((task) => {
                         return (
-                            <Task data={task} Key={task.id} onTaskDelete={this.onTaskDelete}/>
+                            <Task
+                            data={task} 
+                            Key={task.id} 
+                            onTaskDelete={this.onTaskDelete}/>                           
                         );
                     })}
                 </Row>
@@ -93,7 +97,7 @@ class Todo extends Component {
         onClick={this.deleteSelectedTasks}
         // disabled={!this.state.selectedTasks.size}
       >
-        Delete selected
+        Delete selectedq
       </Button>
             </Container>
         );
