@@ -96,7 +96,7 @@ class Todo extends Component {
         variant="danger"
         // onClick={this.deleteSelectedTasks} 
       >
-        Delete selectedq
+        Delete selected
       </Button>
             </Container>
         );
