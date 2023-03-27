@@ -11,7 +11,9 @@ function Task(props) {
       <Card className="mt-2 mb-2">
         <Card.Body>
         <Form.Check 
-        className={styles.selectTask}       
+        className={styles.selectTask} 
+        onClick={()=>props.onTaskSelect(task.id)}
+              
         />
           <Card.Title>{task.title}</Card.Title>
           <Card.Text>Description</Card.Text>
