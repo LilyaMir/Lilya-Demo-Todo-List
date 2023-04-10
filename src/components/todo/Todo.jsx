@@ -10,6 +10,7 @@ class Todo extends Component {
     tasks: [],
     newTaskTitle: "",
     selectedTasks: new Set(),
+    isConfirmDialogOpen: false,
   };
 
   handleInputChange = (event) => {
@@ -81,10 +82,12 @@ class Todo extends Component {
       tasks: newTasks,
       selectedTasks: new Set(),
     });
+
   };
 
   render() {
-    const isAddNewTaskButtonDisabled = !this.state.newTaskTitle.trim();
+    const {isConfirmDialogOpen, newTaskTitle} = this.state;
+    const isAddNewTaskButtonDisabled = !newTaskTitle.trim();
 
     return (
       <Container>
@@ -126,8 +129,8 @@ class Todo extends Component {
         disabled={!this.state.selectedTasks.size}
       >
         Delete selected
-      </Button>
-      <ConfirmDialog />
+      </Button>      
+      {isConfirmDialogOpen && <ConfirmDialog />}
       </Container>
     );
   }

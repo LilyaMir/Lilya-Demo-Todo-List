@@ -1,11 +1,13 @@
 import {Modal, Button} from "react-bootstrap";
 
-function ConfirmDialog(){
+function ConfirmDialog(props){
     return(
         <Modal
         size="sm"
-        show={false}
-        onHide={() => {}}
+        show={true}
+        onHide={() => {
+          console.log('closed')
+        }}
       >
         <Modal.Header closeButton>
           <Modal.Title>
