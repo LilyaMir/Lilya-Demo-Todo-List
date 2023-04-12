@@ -10,6 +10,7 @@ class Todo extends Component {
     tasks: [],
     newTaskTitle: "",
     selectedTasks: new Set(),
+    isConfirmDialogOpen: false,
   };
 
   handleInputChange = (event) => {
@@ -66,7 +67,7 @@ class Todo extends Component {
       selectedTasks.add(taskId);
     }
     this.setState({ selectedTasks });
-  }
+  };
 
   deleteSelectedTasks = ()=>{
       const newTasks = [];
@@ -80,11 +81,27 @@ class Todo extends Component {
     this.setState({
       tasks: newTasks,
       selectedTasks: new Set(),
+      isConfirmDialogOpen: false
+    });
+
+  };
+
+  openConfirmDialog = ()=>{
+    this.setState({
+      isConfirmDialogOpen: true
+    });
+  };
+
+  closeConfirmDialog = ()=>{
+    this.setState({
+      isConfirmDialogOpen: false
     });
   };
 
   render() {
-    const isAddNewTaskButtonDisabled = !this.state.newTaskTitle.trim();
+
+    const {isConfirmDialogOpen, newTaskTitle, selectedTasks} = this.state;
+    const isAddNewTaskButtonDisabled = !newTaskTitle.trim();
 
     return (
       <Container>
@@ -122,12 +139,18 @@ class Todo extends Component {
         <Button
         className={styles.deletSelected}
         variant="danger"
-        onClick={this.deleteSelectedTasks}
-        disabled={!this.state.selectedTasks.size}
+        onClick={this.openConfirmDialog}
+        disabled={!selectedTasks.size}
       >
         Delete selected
-      </Button>
-      <ConfirmDialog />
+      </Button>      
+      {isConfirmDialogOpen && 
+      <ConfirmDialog 
+      tasksCount={selectedTasks.size}
+      onCancel={this.closeConfirmDialog}
+      onSubmit={this.deleteSelectedTasks}
+      />
+      }
       </Container>
     );
   }
