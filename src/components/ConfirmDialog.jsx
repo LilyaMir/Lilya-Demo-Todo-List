@@ -1,5 +1,5 @@
 import {memo} from 'react';
-import { Modal, Button } from "react-bootstrap";
+import {Modal, Button} from "react-bootstrap";
 
 
 function ConfirmDialog(props) {
