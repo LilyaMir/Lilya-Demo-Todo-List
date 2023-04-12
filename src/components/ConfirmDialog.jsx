@@ -1,3 +1,4 @@
+import {memo} from 'react';
 import {Modal, Button} from "react-bootstrap";
 
 function ConfirmDialog(props) {
@@ -26,4 +27,4 @@ function ConfirmDialog(props) {
   );
 }
 
-export default ConfirmDialog;
+export default memo(ConfirmDialog);
