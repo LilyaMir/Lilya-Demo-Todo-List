@@ -25,7 +25,7 @@ function DeleteSelected(props) {
         <ConfirmDialog
           tasksCount={props.tasksCount}
           onCancel={toggleConfirmDialog}
-          onSubmit={()=>{
+          onSubmit={() => {
             props.onSubmit();
             toggleConfirmDialog();
           }}
@@ -34,9 +34,9 @@ function DeleteSelected(props) {
     </>
   );
 }
-// Task.propTypes = {
-//   tasksCount: PropTypes.number.isRequired,
-//   onSubmit: PropTypes.func.isRequired,
-//    };
+DeleteSelected.propTypes = {
+  tasksCount: PropTypes.number.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default DeleteSelected;
