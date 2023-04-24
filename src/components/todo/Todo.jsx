@@ -72,8 +72,6 @@ function Todo() {
     setSelectedTasks(new Set());
   };
 
-  let newTaskTitle = '';
-
   return (
     <Container>
       <Row className="justify-content-center">
