@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect, useEffect} from "react";
 import {Form, Button, Modal} from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import PropTypes from 'prop-types';
+import {formatDate} from '../../utils/helpers';
 import styles from './taskModal.module.css';
 
 function TaskModal(props) {
@@ -10,12 +11,25 @@ function TaskModal(props) {
   const [date, setDate] = useState(new Date());
   const [isTitleValid, setIsTitleValid] = useState(false);
 
+  useEffect(()=>{
+  const {data} = props;
+  if(data){
+    setTitle(data.title);
+    setDescription(data.description);
+    setDate(data.date ? new Date(data.date): new Date());
+  }
+}, []);
+
+
  const saveTask = ()=>{
  const newTask = {
     title:  title.trim(),
     description: description.trim(),
-    date: date.toISOString().slice(0, 10)
+    date: formatDate(date)
  };
+ if(props.data){
+  newTask._id = props.data._id;
+ }
  props.onSave(newTask);
  };
 const onTitleChange = (event)=>{
@@ -25,6 +39,19 @@ const trimmedTitle = value.trim();
 setIsTitleValid(!!trimmedTitle);
 setTitle(value);
 }
+
+// useLayoutEffect(()=>{
+//   const keyDownHandler = (event) =>{
+//     console.log(event);
+//     if(event.key === 's' && (event.ctrlKey || event.metaKey)){
+//   }
+// };
+// document.addEventListener('keydown', keyDownHandler);
+// return ()=>{
+//   document.removeEventListener('keydown', keyDownHandler);
+// };
+// }, []);
+
   return (
     <Modal size="md" show={true} onHide={props.onCancel}>
     <Modal.Header closeButton>
@@ -71,6 +98,7 @@ selected={date}
 }
 TaskModal.propTypes = {
   onCancel: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired
+  onSave: PropTypes.func.isRequired,
+  data: PropTypes.object
 };
 export default TaskModal;
