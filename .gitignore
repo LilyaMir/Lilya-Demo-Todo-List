@@ -8,8 +8,8 @@
 
 # testing
 /coverage
-/demo
 .vscode
+
 
 
 # production
