@@ -53,6 +53,7 @@ function TaskModal(props) {
     return () => {
       document.removeEventListener("keydown", keydownHandler);
     };
+    // eslint-disable-next-line
   }, [title, description, date]);
 
   return (
