@@ -5,9 +5,9 @@ import Task from "../task/Task";
 import ConfirmDialog from "../ConfirmDialog";
 import DeleteSelected from "../deleteSelected/DeleteSelected";
 import TaskModal from "../taskModal/TaskModal";
-import NavBar from "../NavBar/NavBar";
 import Filters from "../filters/Filters";
 import TaskApi from "../../api/taskApi";
+import styles from "./todo.module.css";
 
 const taskApi = new TaskApi();
 
@@ -18,15 +18,20 @@ function Todo() {
   const [isAddTaskModalOpen, setIsAddTaskModalOpen] = useState(false);
   const [editableTask, setEditableTask] = useState(null);
 
-  useEffect(() => {
-    taskApi.getAll()
+  const getTasks = (filters) => {
+    taskApi.getAll(filters)
       .then((tasks) => {
         setTasks(tasks);
       })
       .catch((err) => {
         toast.error(err.message);
       });
+  };
+
+  useEffect(() => {
+    getTasks();
   }, []);
+
 
   const onAddNewTask = (newTask) => {
     taskApi
@@ -108,7 +113,6 @@ function Todo() {
     taskApi
       .update(editedTask)
       .then((task) => {
-        console.log("task", task);
         const newTasks = [...tasks];
         const foundIndex = newTasks.findIndex((t) => t._id === task._id);
         newTasks[foundIndex] = task;
@@ -121,32 +125,42 @@ function Todo() {
       });
   };
 
+  const onFilter = (filters) => {
+    getTasks(filters);
+  };
+
   return (
-    <Container className="bg-red">
-      <Row>
-        <NavBar />
-      </Row>
+    <Container>
+      <span className={styles.todo}>
+        TODO  LIST
+      </span>
       <Row className="justify-content-center m-3">
-        <Col xs="6" sm="4" md="3">
-          <Button variant="success" onClick={() => setIsAddTaskModalOpen(true)}>
+        <Col xs="6" sm="4" md="3" lg="2">
+          <Button className={styles.buttonsSize} variant="success" onClick={() => setIsAddTaskModalOpen(true)}>
             Add new task
           </Button>
         </Col>
-        <Col xs="6" sm="4" md="3">
-          <Button variant="warning" onClick={selectAllTasks}>
+        <Col xs="6" sm="4" md="3" lg="2">
+          <Button className={styles.buttonsSize} variant="warning"
+            onClick={selectAllTasks}
+            disabled={!tasks.length}
+          >
             Select all
           </Button>
         </Col>
-        <Col xs="6" sm="4" md="3">
-          <Button variant="secondary" onClick={resetSelectedTasks}>
+        <Col xs="6" sm="4" md="3" lg="2">
+          <Button className={styles.buttonsSize} variant="info"
+            onClick={resetSelectedTasks}
+            disabled={!tasks.length}
+          >
             Reset selected
           </Button>
         </Col>
       </Row>
       <Row>
-        <Filters />
+        <Filters onFilter={onFilter} />
       </Row>
-      <Row  className="mb-5">
+      <Row className="mb-5">
         {tasks.map((task) => {
           return (
             <Task
@@ -161,11 +175,11 @@ function Todo() {
           );
         })}
       </Row>
-        <DeleteSelected
-          disabled={!selectedTasks.size}
-          tasksCount={selectedTasks.size}
-          onSubmit={deleteSelectedTasks}
-        />
+      <DeleteSelected 
+        disabled={!selectedTasks.size}
+        tasksCount={selectedTasks.size}
+        onSubmit={deleteSelectedTasks}
+      />
       {taskToDelete && (
         <ConfirmDialog
           tasksCount={1}
