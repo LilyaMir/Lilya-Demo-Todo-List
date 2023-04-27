@@ -125,9 +125,7 @@ function Todo() {
       });
   };
 
-  const onFilter = (filters) => {
-    getTasks(filters);
-  };
+  let newTaskTitle = '';
 
   return (
     <Container>
