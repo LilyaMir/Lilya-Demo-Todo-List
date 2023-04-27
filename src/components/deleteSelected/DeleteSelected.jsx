@@ -25,7 +25,7 @@ function DeleteSelected(props) {
         <ConfirmDialog
           tasksCount={props.tasksCount}
           onCancel={toggleConfirmDialog}
-          onSubmit={()=>{
+          onSubmit={() => {
             props.onSubmit();
             toggleConfirmDialog();
           }}

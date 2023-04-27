@@ -125,7 +125,7 @@ function Filters(props) {
                 const dateValue = dateFilters[dateOption.value];
                 return (
                   <Col sm={6} md={4} lg={3}
-                    className="text-center"
+                    className={`text-center ${styles.statusAndSort}`}
                     key={dateOption.label}
                   >
                     <fieldset className={styles.filterItem}>
@@ -143,7 +143,7 @@ function Filters(props) {
             <Row>
               <Col sm={6} className="text-center">
                 <fieldset>
-                  <legend>Staus</legend>
+                  <legend className={styles.statusAndSort}>Staus</legend>
                   <Form.Select
                     onChange={(event) => onFilterOptionChange('status', event.target.value)}
                     value={optionFilters.status}
@@ -162,7 +162,7 @@ function Filters(props) {
               </Col>
               <Col sm={6} className="text-center">
                 <fieldset>
-                  <legend>Sort</legend>
+                  <legend className={styles.statusAndSort}>Sort</legend>
                   <Form.Select
                     onChange={(event) => onFilterOptionChange('sort', event.target.value)}
                     value={optionFilters.sort}
