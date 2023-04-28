@@ -1,4 +1,8 @@
-main{
+.body {
+  background-color: #f0f8ff;
+}
+
+.main{
   max-width: 1440px;
   margin: 0 auto;
 }

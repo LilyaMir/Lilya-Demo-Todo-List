@@ -3,7 +3,7 @@
 }
 
 .filterItem{
-    font-size: 10px;
+    font-size: 16px;
 }
 .filterItem>legend{
     font-size: 20px;
@@ -11,3 +11,9 @@
 .filterbg{
     background: #dee2e4;
 }
+
+.statusAndSort{
+    color: rgb(106, 28, 180);
+    font-size: 25px;
+}
+

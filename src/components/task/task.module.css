@@ -1,26 +1,43 @@
-.actionButton{
+.actionButton {
     margin-left: 10px;
 }
-.actionButtons{
-display: flex;
-justify-content: right;
+
+.actionButtons {
+    display: flex;
+    justify-content: right;
 }
 
-.taskbg{
-    background: #dee2e4;
+.task {
+    background: #ebeeef;
+    border-width: 4px;
+    border-style: double;
+    border-radius: 25px;
+    box-shadow: 10px 10px 5px rgb(166, 180, 180)
 }
 
-.selectTask{
+.cardTitle {
+    color: rgb(106, 28, 180);
+    text-decoration-line: underline;
+    text-decoration-color: rgb(1, 101, 1);
+}
+
+.cardBody {
+    color: rgb(140, 96, 181);
+}
+
+.selectTask {
     width: 18px;
     height: 18px;
     margin-bottom: 30px;
 }
-.selectTask input{
+
+.selectTask input {
     cursor: pointer;
 }
 
-.textElipsis{
+.textElipsis {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    height: 40px;
 }

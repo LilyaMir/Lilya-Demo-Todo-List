@@ -11,12 +11,13 @@ function TaskModal(props) {
   const [date, setDate] = useState(new Date());
   const [isTitleValid, setIsTitleValid] = useState(false);
 
-  useEffect(()=>{
-    const {data} = props;
-    if(data){
+  useEffect(() => {
+    const { data } = props;
+    if (data) {
       setTitle(data.title);
       setDescription(data.description);
-      setDate(data.date ? new Date(data.date): new Date());
+      setDate(data.date ? new Date(data.date) : new Date());
+      setIsTitleValid(true);
     }
   }, [props]);
 
@@ -26,7 +27,7 @@ function TaskModal(props) {
       description: description.trim(),
       date: formatDate(date),
     };
-    if(props.data){
+    if (props.data) {
       newTask._id = props.data._id;
     }
     props.onSave(newTask);
@@ -42,16 +43,17 @@ function TaskModal(props) {
 
   useLayoutEffect(() => {
     const keydownHandler = (event) => {
-      const {key, ctrlKey, metaKey} = event;
-        if(key === 's' && (ctrlKey || metaKey)){
-          event.preventDefault();
-          saveTask();
-        }
-      };
+      const { key, ctrlKey, metaKey } = event;
+      if (key === 's' && (ctrlKey || metaKey)) {
+        event.preventDefault();
+        saveTask();
+      }
+    };
     document.addEventListener("keydown", keydownHandler);
     return () => {
       document.removeEventListener("keydown", keydownHandler);
     };
+    // eslint-disable-next-line
   }, [title, description, date]);
 
   return (
