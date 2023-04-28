@@ -125,10 +125,8 @@ function Todo() {
       });
   };
 
-  let newTaskTitle = '';
   const onFilter = (filters)=>{
     getTasks(filters);
-  let newTaskTitle = '';
   };
 
   return (
