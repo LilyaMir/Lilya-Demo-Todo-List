@@ -126,6 +126,10 @@ function Todo() {
   };
 
   let newTaskTitle = '';
+  const onFilter = (filters)=>{
+    getTasks(filters);
+  let newTaskTitle = '';
+  };
 
   return (
     <Container>
@@ -156,7 +160,7 @@ function Todo() {
         </Col>
       </Row>
       <Row>
-        <Filters onFilter={onFilter} />
+        <Filters onFilter={onFilter} />  
       </Row>
       <Row className="mb-5">
         {tasks.map((task) => {
