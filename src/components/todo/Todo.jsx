@@ -134,13 +134,13 @@ function Todo() {
       <span className={styles.todo}>
         TODO  LIST
       </span>
-      <Row className="justify-content-center m-3">
-        <Col xs="6" sm="4" md="3" lg="2">
+      <Row className="justify-content-center m-4">
+        <Col  xs="12" sm="6" md="4" lg="2">
           <Button className={styles.buttonsSize} variant="success" onClick={() => setIsAddTaskModalOpen(true)}>
             Add new task
           </Button>
         </Col>
-        <Col xs="6" sm="4" md="3" lg="2">
+        <Col  xs="12" sm="6" md="4" lg="2">
           <Button className={styles.buttonsSize} variant="warning"
             onClick={selectAllTasks}
             disabled={!tasks.length}
@@ -148,7 +148,7 @@ function Todo() {
             Select all
           </Button>
         </Col>
-        <Col xs="6" sm="4" md="3" lg="2">
+        <Col  xs="12" sm="6" md="4" lg="2">
           <Button className={styles.buttonsSize} variant="info"
             onClick={resetSelectedTasks}
             disabled={!tasks.length}
@@ -156,6 +156,14 @@ function Todo() {
             Reset selected
           </Button>
         </Col>
+        <Col  xs="12" sm="6" md="4" lg="2">
+          <DeleteSelected 
+              disabled={!selectedTasks.size}
+              tasksCount={selectedTasks.size}
+              onSubmit={deleteSelectedTasks}
+          />
+        </Col>
+       
       </Row>
       <Row>
         <Filters onFilter={onFilter} />  
@@ -175,11 +183,7 @@ function Todo() {
           );
         })}
       </Row>
-      <DeleteSelected 
-        disabled={!selectedTasks.size}
-        tasksCount={selectedTasks.size}
-        onSubmit={deleteSelectedTasks}
-      />
+    
       {taskToDelete && (
         <ConfirmDialog
           tasksCount={1}
