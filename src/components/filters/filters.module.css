@@ -1,0 +1,13 @@
+.form{
+    width: calc(100% - 40px);
+}
+
+.filterItem{
+    font-size: 10px;
+}
+.filterItem>legend{
+    font-size: 20px;
+}
+.filterbg{
+    background: #dee2e4;
+}
