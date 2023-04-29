@@ -136,7 +136,8 @@ function Todo() {
       </span>
       <Row className="justify-content-center m-4">
         <Col  xs="12" sm="6" md="4" lg="2">
-          <Button className={styles.buttonsSize} variant="success" onClick={() => setIsAddTaskModalOpen(true)}>
+          <Button className={styles.buttonsSize} variant="success" 
+          onClick={() => setIsAddTaskModalOpen(true)}>
             Add new task
           </Button>
         </Col>
@@ -156,7 +157,7 @@ function Todo() {
             Reset selected
           </Button>
         </Col>
-        <Col  xs="12" sm="6" md="4" lg="2">
+        <Col xs="12" sm="6" md="4" lg="2">
           <DeleteSelected 
               disabled={!selectedTasks.size}
               tasksCount={selectedTasks.size}

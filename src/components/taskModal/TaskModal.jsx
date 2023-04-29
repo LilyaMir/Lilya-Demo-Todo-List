@@ -77,7 +77,7 @@ function TaskModal(props) {
           onChange={(event) => setDescription(event.target.value)}
         />
         <h6>Deadline:</h6>
-        <DatePicker showIcon selected={date} onChange={setDate} />
+        <DatePicker  className={styles.dPicer} showIcon selected={date} onChange={setDate} />
       </Modal.Body>
       <Modal.Footer>
         <div className="d-flex justify-content-evenly gap-3">
