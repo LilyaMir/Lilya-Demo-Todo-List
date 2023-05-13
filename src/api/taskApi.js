@@ -43,6 +43,9 @@ export default class TaskApi {
   getAll(filters) {
     return this.#request("GET", { filters: filters });
   }
+  getSingle(taskId) {
+    return this.#request("GET", { params: taskId });
+  }
   add(task) {
     return this.#request("POST", { body: task });
   };
