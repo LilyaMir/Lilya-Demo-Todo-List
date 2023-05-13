@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import Task from "../task/Task";
-import ConfirmDialog from "../ConfirmDialog";
-import DeleteSelected from "../deleteSelected/DeleteSelected";
-import TaskModal from "../taskModal/TaskModal";
-import Filters from "../filters/Filters";
+import Task from "../../components/task/Task";
+import ConfirmDialog from "../../components/ConfirmDialog";
+import DeleteSelected from "../../components/deleteSelected/DeleteSelected";
+import TaskModal from "../../components/taskModal/TaskModal";
+import Filters from "../../components/filters/Filters";
 import TaskApi from "../../api/taskApi";
 import styles from "./todo.module.css";
 
 const taskApi = new TaskApi();
-
+ 
 function Todo() {
   const [tasks, setTasks] = useState([]);
   const [selectedTasks, setSelectedTasks] = useState(new Set());
@@ -116,7 +116,7 @@ function Todo() {
         const newTasks = [...tasks];
         const foundIndex = newTasks.findIndex((t) => t._id === task._id);
         newTasks[foundIndex] = task;
-        toast.success(`Tasks havs been updated successfully!`);
+        toast.success(`Task has been updated successfully!`);
         setTasks(newTasks);
         setEditableTask(null);
       })
@@ -208,18 +208,7 @@ function Todo() {
           data={editableTask}
         />
       )}
-      <ToastContainer
-        position="bottom-left"
-        autoClose={3000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
+      
     </Container>
   );
 }
