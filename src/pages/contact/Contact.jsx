@@ -1,7 +1,10 @@
 function Contact(){
 
-    return (
+    return(
+        <div>
         <h1 className="text-center">Contact us page</h1>
+       
+        </div>
     )
 }
 

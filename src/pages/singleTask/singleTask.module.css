@@ -1,0 +1,12 @@
+.actionButton{
+    margin-left: 10px;
+}
+.actionButtons{
+display: flex;
+justify-content: right;
+}
+.taskContainer{
+    height: calc(100vh - 40px);
+    display: flex;
+    align-items: center;
+}

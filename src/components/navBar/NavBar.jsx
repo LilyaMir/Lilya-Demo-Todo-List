@@ -5,8 +5,13 @@ import Navbar from "react-bootstrap/Navbar";
 import { NavLink } from "react-router-dom";
 import styles from "./navBar.module.css";
 
-
-const activeLinkClassName = ({isActive}) =>isActive ? styles.active : '';
+const activeLinkClassName = ({isActive}) =>{
+  const classes = [styles.navLink];
+  if(isActive){
+    classes.push(styles.active);
+  }
+ return classes.join(' ');
+};
 
 function NavBar() {
   return (

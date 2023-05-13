@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useEffect, memo } from "react";
+import { useState, useLayoutEffect, useEffect, memo, useRef } from "react";
 import { Form, Button, Modal } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import PropTypes from "prop-types";
@@ -10,9 +10,16 @@ function TaskModal(props) {
   const [description, setDescription] = useState("");
   const [date, setDate] = useState(new Date());
   const [isTitleValid, setIsTitleValid] = useState(false);
+ const titleRef = useRef(null); 
+
+
+ useEffect(()=>{
+  titleRef.current.focus();
+ }, []);
 
   useEffect(() => {
     const { data } = props;
+     
     if (data) {
       setTitle(data.title);
       setDescription(data.description);
@@ -55,11 +62,12 @@ function TaskModal(props) {
     };
     // eslint-disable-next-line
   }, [title, description, date]);
+  const modalTitle = props.data ? 'Task edit' : 'Add new task';
 
   return (
     <Modal size="md" show={true} onHide={props.onCancel}>
       <Modal.Header closeButton>
-        <Modal.Title>Add new task</Modal.Title>
+        <Modal.Title>{modalTitle}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form.Control
@@ -67,6 +75,7 @@ function TaskModal(props) {
           placeholder="Title"
           value={title}
           onChange={onTitleChange}
+          ref={titleRef}
         />
         <Form.Control
           className="mb-3"
